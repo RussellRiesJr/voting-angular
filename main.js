@@ -1,4 +1,5 @@
-angular.module("app", []);
+angular.module("app", [])
+
   .config(() => {
     firebase.initializeApp({
       apiKey: "AIzaSyDhpVxr7yIbjD4MhoyviqPshkHGRmQqr28",
@@ -6,11 +7,11 @@ angular.module("app", []);
       databaseURL: "https://anguler-voting.firebaseio.com",
       storageBucket: "anguler-voting.appspot.com",
     });
-  });
-  .controller("MainCtrl", function ($scope) {
+  })
+  .controller("MainCtrl", function ($timeout) {
     const main = this;
 
-    main.heading = 'Who ya got?';
+    main.heading = 'Choose Your Weapon!';
 
     main.rock = function () {
       firebase.database().ref('/votes/rock')
@@ -31,7 +32,7 @@ angular.module("app", []);
       main.rockCount = data.rock;
       main.paperCount = data.paper;
       main.scissorsCount = data.scissors;
-      $scope.$apply();
+      $timeout();
     });
   });
 
